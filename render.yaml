@@ -3,6 +3,7 @@ services:
     name: trackingapi
     env: java
     plan: free
+    dockerfilePath: ./Dockerfile
     buildCommand: ./mvnw clean package
     startCommand: java -jar target/trackingapi-0.0.1-SNAPSHOT.jar
     envVars:
