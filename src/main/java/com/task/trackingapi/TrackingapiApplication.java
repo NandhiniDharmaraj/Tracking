@@ -1,5 +1,7 @@
 package com.task.trackingapi;
 
+import java.util.Collections;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -13,7 +15,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class TrackingapiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TrackingapiApplication.class, args);
-	}
+		SpringApplication app = new SpringApplication(TrackingapiApplication.class);
 
+		String port = System.getenv("PORT");
+		if (port != null) {
+			app.setDefaultProperties(Collections.singletonMap("server.port", port));
+		}
+
+		app.run(args);
+	}
 }
