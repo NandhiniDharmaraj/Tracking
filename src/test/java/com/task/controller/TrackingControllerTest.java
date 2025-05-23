@@ -35,11 +35,10 @@ public class TrackingControllerTest {
 	private TrackingService trackingService;
 
 	@MockBean
-	private RedisService redisService; // ✅ This is key
+	private RedisService redisService;
 
 	@BeforeEach
 	void setup() {
-		// ✅ Mock the method properly
 		when(redisService.isDuplicate(anyString(), anyLong())).thenReturn(false);
 
 		Tracking mockTracking = new Tracking();
